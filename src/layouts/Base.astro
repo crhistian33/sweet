@@ -49,33 +49,55 @@ const consulta = enlaceWhatsApp(
             <span>{marca.nombre}</span>
           )}
         </a>
-        <nav class="menu" aria-label="Principal">
-          <a href={rutas.inicio}>Inicio</a>
-          <a href={`${rutas.inicio}#productos`}>Productos</a>
-          <a href={`${rutas.inicio}#nosotros`}>Nosotros</a>
-          <a class="carrito-enlace" href={rutas.carrito}>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
+        <div class="encabezado-derecha">
+          <nav class="menu" id="menu-principal" aria-label="Principal">
+            <a href={rutas.inicio}>Inicio</a>
+            <a href={`${rutas.inicio}#productos`}>Productos</a>
+            <a href={`${rutas.inicio}#nosotros`}>Nosotros</a>
+          </nav>
+
+          <div class="encabezado-acciones">
+            <a class="carrito-enlace" href={rutas.carrito}>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+              <span class="carrito-texto">Carrito</span>
+              <span class="contador" data-contador hidden>
+                0
+              </span>
+            </a>
+
+            <button
+              type="button"
+              class="menu-toggle"
+              id="menu-toggle"
+              aria-label="Abrir menú"
+              aria-expanded="false"
+              aria-controls="menu-principal"
             >
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
-            <span>Carrito</span>
-            <span class="contador" data-contador hidden>
-              0
-            </span>
-          </a>
-        </nav>
+              <span class="icono-burger" aria-hidden="true">
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
+      <!-- Fondo traslúcido para cerrar menú al pulsar afuera en móviles -->
+      <div class="menu-fondo" id="menu-fondo" aria-hidden="true"></div>
     </header>
 
     <div id="contenido" tabindex="-1">
@@ -111,20 +133,78 @@ const consulta = enlaceWhatsApp(
       import "../scripts/tienda";
     </script>
 
-    <!-- Script inline: scroll-aware header -->
+    <!-- Script inline: scroll-aware header y menú responsive -->
     <script is:inline>
       (function () {
+        // Sticky header
         var header = document.querySelector(".encabezado");
-        if (!header) return;
-        var ultimo = 0;
-        function onScroll() {
-          var y = window.scrollY;
-          if (y > 10 && ultimo <= 10) header.classList.add("pegado");
-          else if (y <= 10 && ultimo > 10) header.classList.remove("pegado");
-          ultimo = y;
+        if (header) {
+          var ultimo = 0;
+          function onScroll() {
+            var y = window.scrollY;
+            if (y > 10 && ultimo <= 10) header.classList.add("pegado");
+            else if (y <= 10 && ultimo > 10) header.classList.remove("pegado");
+            ultimo = y;
+          }
+          window.addEventListener("scroll", onScroll, { passive: true });
+          onScroll();
         }
-        window.addEventListener("scroll", onScroll, { passive: true });
-        onScroll();
+
+        // Menú hamburguesa móvil
+        var toggle = document.getElementById("menu-toggle");
+        var menu = document.getElementById("menu-principal");
+        var fondo = document.getElementById("menu-fondo");
+
+        if (!toggle || !menu) return;
+
+        function abrirMenu() {
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Cerrar menú");
+          menu.classList.add("abierto");
+          if (fondo) fondo.classList.add("abierto");
+        }
+
+        function cerrarMenu() {
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menú");
+          menu.classList.remove("abierto");
+          if (fondo) fondo.classList.remove("abierto");
+        }
+
+        toggle.addEventListener("click", function () {
+          var abierto = toggle.getAttribute("aria-expanded") === "true";
+          if (abierto) {
+            cerrarMenu();
+          } else {
+            abrirMenu();
+          }
+        });
+
+        if (fondo) {
+          fondo.addEventListener("click", cerrarMenu);
+        }
+
+        // Cerrar al pulsar Escape
+        window.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+            cerrarMenu();
+            toggle.focus();
+          }
+        });
+
+        // Cerrar al hacer clic en cualquier enlace del menú móvil
+        menu.querySelectorAll("a").forEach(function (enlace) {
+          enlace.addEventListener("click", function () {
+            cerrarMenu();
+          });
+        });
+
+        // Cerrar automáticamente si se pasa a vista de escritorio
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 768 && toggle.getAttribute("aria-expanded") === "true") {
+            cerrarMenu();
+          }
+        }, { passive: true });
       })();
     </script>
   </body>
