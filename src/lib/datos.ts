@@ -53,7 +53,10 @@ const esquemaMarca = z.object({
     destaque: z.string().max(50, "Máximo 50 caracteres").optional(),
     enlaceBoton: z.string().max(150, "Máximo 150 caracteres").optional(),
     textoBotonSecundario: z.string().max(30, "Máximo 30 caracteres").optional(),
-    enlaceBotonSecundario: z.string().max(150, "Máximo 150 caracteres").optional(),
+    enlaceBotonSecundario: z
+      .string()
+      .max(150, "Máximo 150 caracteres")
+      .optional(),
   }),
   nosotros: z.object({
     titulo: z.string().min(2, "Es muy corto").max(40, "Máximo 40 caracteres"),
@@ -117,7 +120,7 @@ const esquemaProductos = z
           "Usa solo minúsculas, números y guiones, sin espacios (ejemplo: pan-integral)",
         ),
       nombre: z.string().min(2, "Es muy corto").max(50, "Máximo 50 caracteres"),
-      descripcion: z.string().max(110, "Máximo 110 caracteres"),
+      descripcion: z.string().max(200, "Máximo 200 caracteres"),
       precio: z.number().positive("El precio debe ser mayor que 0"),
       imagen: z.string().min(1, "Escribe el nombre del archivo de la imagen"),
       etiqueta: z.string().max(20, "Máximo 20 caracteres").optional(),

@@ -1,9 +1,9 @@
 {
   "nombre": "",
   "eslogan": "Escribe aquí tu eslogan",
-  "logo": "logo.avif",
+  "logo": "logo.png",
   "colores": {
-    "principal": "#BA1650",
+    "principal": "#C7156B",
     "secundario": "#F4B942",
     "fondo": "#F6F8F7",
     "texto": "#1B2430"
@@ -15,22 +15,21 @@
   "esquinas": "suaves",
   "portada": {
     "insignia": "⭐ Especialidad de la casa",
-    "titulo": "Los mejores cheesecakes de la ciudad",
-    "subtitulo": "Disfruta de nuestros productos recién horneados y con ingredientes de calidad",
-    "destaque": "100% Fresco y artesanal",
+    "titulo": "Dulces momentos bañados en chocolate",
+    "subtitulo": "Trufas artesanales, mashmelos chocotejados y gelatinas especiales hechos para endulzar tu día",
+    "destaque": "Casero y con insumos naturales",
     "etiqueta": "Favorito",
-    "imagen": "productos/producto-nuevo-1.jpg",
+    "imagen": "productos/producto1.jpg",
     "textoBoton": "Ver catálogo",
     "enlaceBoton": "#productos",
     "textoBotonSecundario": "Pedir por WhatsApp"
   },
   "nosotros": {
-    "titulo": "Somos SquAD",
-    "texto": "Nuestro emprendimiento nace desde el trabajo de un proyecto escolar, con el objetivo de ofrecer productos de calidad y deliciosos a nuestros clientes. Nos esforzamos por brindar un servicio excepcional y crear experiencias memorables para todos los que prueban nuestros productos.",
+    "titulo": "¿Quiénes somos?",
+    "texto": "Nuestro emprendimiento nace del proyecto escolar.",
     "puntos": [
-      "Productos hechos con cuidado",
-      "Precios justos",
-      "Atención directa por WhatsApp"
+      "Productos caseros",
+      "Hechos con insumos naturales"
     ]
   },
   "contacto": {

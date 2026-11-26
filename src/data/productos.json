@@ -1,46 +1,24 @@
 [
   {
     "id": "producto-1",
-    "nombre": "Cheesecake de fresa",
-    "descripcion": "Cheesecake de fresa con crema y salsa de fresa",
-    "precio": 7,
-    "imagen": "productos/cheesecake-1.png",
-    "etiqueta": "Oferta"
+    "nombre": "CHOCO MASH",
+    "descripcion": "Delicioso mashmallow suave y esponjoso, cubierto con una capa de chocolate y decorado con coloridas grajeas que le dan un toque dulce y divertido. ¡Perfecto para disfrutar de un antojito! 🍫🌈",
+    "precio": 1.50,
+    "imagen": "productos/producto1.jpg"
   },
   {
     "id": "producto-2",
-    "nombre": "Cheesecake de maracuyá",
-    "descripcion": "Cheesecake de maracuyá con crema y salsa de maracuyá",
-    "precio": 8,
-    "imagen": "productos/cheesecake-2.avif"
+    "nombre": "TRUFICHOCO",
+    "descripcion": "Deliciosas trufas elaboradas con leche condensada y chocolate, de textura suave y sabor dulce. Decoradas con polvo de chocolate Nesquik para darles un toque especial. ¡Perfectas para disfrutar! 🍫💕",
+    "precio": 1,
+    "imagen": "productos/producto2.jpg",
+    "etiqueta": "2 x S/ 1.00"
   },
   {
     "id": "producto-3",
-    "nombre": "Cheesecake de mango",
-    "descripcion": "Cheesecake de mango con crema y salsa de mango",
-    "precio": 15,
-    "imagen": "productos/cheesecake-3.jpg"
-  },
-  {
-    "id": "producto-4",
-    "nombre": "Cheesecake de fresa",
-    "descripcion": "Cheesecake de fresa con crema y salsa de fresa",
-    "precio": 7,
-    "imagen": "productos/cheesecake-1.png",
-    "etiqueta": "Oferta"
-  },
-  {
-    "id": "producto-5",
-    "nombre": "Cheesecake de maracuyá",
-    "descripcion": "Cheesecake de maracuyá con crema y salsa de maracuyá",
-    "precio": 8,
-    "imagen": "productos/cheesecake-2.avif"
-  },
-  {
-    "id": "producto-6",
-    "nombre": "Cheesecake de mango",
-    "descripcion": "Cheesecake de mango con crema y salsa de mango",
-    "precio": 15,
-    "imagen": "productos/cheesecake-3.jpg"
+    "nombre": "GELADULCE",
+    "descripcion": "Refrescante y deliciosa gelatina de fresa, con una textura suave y un dulce sabor frutal. Decorada con coloridas grajeas que le dan un toque divertido y especial. 🍓🌈",
+    "precio": 2,
+    "imagen": "productos/producto3.jpg"
   }
 ]
